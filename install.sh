@@ -17,3 +17,6 @@ mkdir /mnt/boot
 mkdir /mnt/home
 mount -o subvol=boot /dev/sda /mnt/boot
 mount -o subvol=home /dev/sda /mnt/home
+
+#install base system
+pacstrap -i /mnt base
