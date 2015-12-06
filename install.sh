@@ -69,5 +69,38 @@ grub-mkconfig -o /boot/grub/grub.cfg
 #Exit from the chroot environment
 exit
 
+# Add user
+useradd -m -G wheel -s /bin/bash lovgren
+passwd lovgren
+
+#sudo
+pacman -S sudo
+#add sudo for wheel group
+sed -i '/NOPASSWD/!s/# %wheel/%wheel/g' /etc/sudoers
+
+#graphic drivers
+nvidia:
+pacman -S nvidia-340xx (legacy cards like 9800gt)
+pacman -S nvidia (newer cards)
+intel:
+pacman -S xf86-video-intel
+
+#virtualbox
+pacman -S virtualbox-guest-utils
+echo vboxguest >> /etc/modules-load.d/virtualbox.conf
+echo vboxsf >> /etc/modules-load.d/virtualbox.conf
+echo vboxvideo >> /etc/modules-load.d/virtualbox.conf
+
+#gnome
+pacman -S gnome
+systemctl enable gdm.service
+
+#volume level at login
+pacman -S alsa-utils
+
+#lxde
+pacman -S lxde lxdm
+systemctl enable lxdm.service
+
 #Reboot the computer
 # reboot
