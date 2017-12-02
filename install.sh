@@ -1,11 +1,14 @@
 #run as root
 sudo su
+#set up correct mirror
+sudo vi /etc/pacman.d/mirrorlist
 #partition drive
-gparted
-# mount drive
 fdisk -l
-mount /dev/sda /mnt
+fdisk /dev/sda
+# mount drive
+mkfs.btrfs -f /dev/sda
 #create subvolumes 
+mount /dev/sda /mnt
 cd /mnt
 btrfs subv create root
 btrfs subv create boot
@@ -55,6 +58,7 @@ systemctl enable dhcpcd.service
 
 #initram
 mkinitcpio -p linux
+mkinitcpio -p linux-lts
 
 #password
 passwd
@@ -66,8 +70,9 @@ os-prober
 grub-install --target=i386-pc --recheck --debug /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg
 
-#Exit from the chroot environment
-exit
+#enable sshd
+pacman -S openssh
+systemctl enable sshd
 
 # Add user
 useradd -m -G wheel -s /bin/bash lovgren
@@ -101,6 +106,9 @@ pacman -S alsa-utils
 #lxde
 pacman -S lxde lxdm
 systemctl enable lxdm.service
+
+#Exit from the chroot environment
+exit
 
 #Reboot the computer
 # reboot
