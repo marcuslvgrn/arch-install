@@ -2,6 +2,10 @@
 sudo su
 #set up correct mirror
 sudo vi /etc/pacman.d/mirrorlist
+#make sure packages are up-to-date
+pacman -Sy
+#make sure keyring is up-to-date
+pacman -S archlinux-keyring
 #partition drive
 fdisk -l
 fdisk /dev/sda
