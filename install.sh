@@ -116,7 +116,7 @@ pacman -S open-vm-tools
 systemctl enable vmtoolsd
 
 #pacaur
-pacman -S yajl gcc make git binutils fakeroot wget pkg-config expac
+pacman -S yajl gcc make git binutils fakeroot wget pkg-config expac ca-certificates-utils
 su lovgren
 cd /tmp
 mkdir temp
