@@ -131,7 +131,7 @@ makepkg -i
 cd ../pacaur
 makepkg -i
 
-pacuar -S virtualbox phpvirtualbox virtualbox-ext-oracle apache php-apache virtualbox-guest-iso
+pacuar -S virtualbox phpvirtualbox virtualbox-ext-oracle apache php-apache
 
 #Exit from the chroot environment
 exit
