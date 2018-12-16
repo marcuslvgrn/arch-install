@@ -131,7 +131,14 @@ makepkg -i
 cd ../pacaur
 makepkg -i
 
-pacuar -S virtualbox phpvirtualbox virtualbox-ext-oracle apache php-apache
+pacaur -S virtualbox phpvirtualbox virtualbox-ext-oracle apache php-apache
+
+pacaur -S docker docker-compose
+systemctl enable docker
+systemctl start docker
+usermod -a -G docker lovgren
+
+pacaur -S libvirt virt-manager dmidecode qemu xorg-xauth
 
 #Exit from the chroot environment
 exit
