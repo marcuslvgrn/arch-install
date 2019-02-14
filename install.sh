@@ -116,17 +116,21 @@ pacman -S open-vm-tools
 systemctl enable vmtoolsd
 
 #pacaur
-pacman -S yajl gcc make git binutils fakeroot wget pkg-config expac ca-certificates-utils
+pacman -S yajl gcc make git binutils fakeroot wget pkg-config expac ca-certificates-utils jq meson gtest gmock
 su lovgren
 cd /tmp
 mkdir temp
 cd temp
 wget https://aur.archlinux.org/cgit/aur.git/snapshot/cower.tar.gz
 wget https://aur.archlinux.org/cgit/aur.git/snapshot/pacaur.tar.gz
+wget https://aur.archlinux.org/cgit/aur.git/snapshot/auracle-git.tar.gz
 tar -zxvf cower.tar.gz
 tar -zxvf pacaur.tar.gz 
+wget https://aur.archlinux.org/cgit/aur.git/snapshot/auracle-git.tar.gz
 cd cower
 gpg --recv-keys 1EB2638FF56C0C53
+makepkg -i
+cd ../auracle-git
 makepkg -i
 cd ../pacaur
 makepkg -i
