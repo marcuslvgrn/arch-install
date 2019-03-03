@@ -125,17 +125,12 @@ wget https://aur.archlinux.org/cgit/aur.git/snapshot/pacaur.tar.gz
 wget https://aur.archlinux.org/cgit/aur.git/snapshot/auracle-git.tar.gz
 tar -zxvf pacaur.tar.gz 
 tar -zxvf auracle-git.tar.gz
-cd ../auracle-git
+cd auracle-git
 makepkg -i
 cd ../pacaur
 makepkg -i
 
 pacaur -S virtualbox phpvirtualbox virtualbox-ext-oracle apache php-apache
-
-pacaur -S docker docker-compose
-systemctl enable docker
-systemctl start docker
-usermod -a -G docker lovgren
 
 pacaur -S libvirt virt-manager dmidecode qemu xorg-xauth
 
@@ -144,3 +139,8 @@ exit
 
 #Reboot the computer
 # reboot
+
+pacaur -S docker docker-compose
+systemctl enable docker
+systemctl start docker
+usermod -a -G docker lovgren
