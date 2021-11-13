@@ -25,6 +25,42 @@ mkdir /mnt/home
 mount -o subvol=boot /dev/sda /mnt/boot
 mount -o subvol=home /dev/sda /mnt/home
 
+
+Create a /etc/wpa_supplicant/wpa_supplicant.conf file with the following lines:
+
+ctrl_interface=/run/wpa_supplicant
+update_config=1
+Run:
+
+wpa_supplicant -B -i wlan0 -c /etc/wpa_supplicant/wpa_supplicant.conf
+Type:
+
+wpa_cli
+then:
+
+scan
+scan_results
+add_network
+sample output:
+
+0
+select the SSID (replace 0 with the exact output):
+
+set_network 0 ssid "Your SSID here"
+Set your password :
+
+set_network 0 psk "You Password here"
+Without the double quotes the command will FAIL. Next step:
+
+enable_network 0
+then:
+
+save_config
+quit
+
+
+
+
 #install base system (non-LTS)
 pacstrap -i /mnt base
 
