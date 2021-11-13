@@ -30,6 +30,7 @@ pacstrap -i /mnt base
 
 #lts kernel directly
 pacman -Sy
+pacstrap /mnt base linux linux-firmware
 pacstrap /mnt $(pacman -Sqg base | sed 's/^linux$/&-lts/') 
 
 #generate fstab
